@@ -1,5 +1,7 @@
 set nocompatible
 colorscheme jellybeans
+" File:         jellybeans.vim
+" URL:          github.com/nanotech/jellybeans.vim
 :set number
 filetype on
 filetype plugin on
