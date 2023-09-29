@@ -11,6 +11,9 @@ config.cursor_blink_rate = 550
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
 
+config.initial_rows = 35
+config.initial_cols = 120
+
 config.warn_about_missing_glyphs = false
 
 return config
