@@ -1,7 +1,9 @@
 set nocompatible
-colorscheme jellybeans
-" File:         jellybeans.vim
-" URL:          github.com/nanotech/jellybeans.vim
+set termguicolors
+colorscheme PaperColor
+set background=dark
+" File:         PaperColor.vim
+" URL:          https://github.com/NLKNguyen/papercolor-theme
 :set number
 filetype on
 filetype plugin on
@@ -13,3 +15,12 @@ syntax on
 set tabstop=4
 set showmode
 
+" set background transparent
+hi Normal guibg=NONE ctermbg=NONE
+
+" cursor change between modes
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
