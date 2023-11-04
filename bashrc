@@ -1,5 +1,4 @@
 # .bashrc
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -27,9 +26,10 @@ unset rc
 
 # Neovim config switcher
 alias nvchad="NVIM_APPNAME=nvchad nvim"
+alias lvim="NVIM_APPNAME=lvim nvim"
 
 nvims() {
-  items=("default" "nvchad")
+  items=("default" "nvchad" "lvim")
   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
   if [[ -z $config ]]; then
     echo "Nothing selected"
@@ -42,9 +42,8 @@ nvims() {
 
 bind -x '"\C-a": nvims'
 
+if [ -d "/home/parilia/stl/prefix" ]; then export PATH="$PATH:/home/parilia/stl/prefix"; fi
 # Rust
 . "$HOME/.cargo/env"
 
-# Added by ProtonUp-Qt on 27-08-2023 19:51:16
-if [ -d "/home/parilia/stl/prefix" ]; then export PATH="$PATH:/home/parilia/stl/prefix"; fi
 eval "$(starship init bash)"

@@ -10,6 +10,8 @@ fi
 # Aliases
 # alias alias_name="command_to_run"
 alias cat="bat"
+alias :q="exit"
+alias :x="clear"
 
 #Rust
 . "$HOME/.cargo/env"
