@@ -24,6 +24,20 @@ fi
 
 unset rc
 
+alias cat="bat"
+alias :q="exit"
+alias :x="clear"
+
+# mkcd
+function mkcd {
+  if [ ! -n "$1" ]; then
+    echo "Enter a directory name"
+  elif [ -d $1 ]; then
+    echo "\`$1' already exists"
+  else
+    mkdir $1 && cd $1
+  fi
+}
 # Neovim config switcher
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias lvim="NVIM_APPNAME=lvim nvim"
