@@ -16,7 +16,7 @@ set copyindent
 set smartindent
 syntax on
 set tabstop=4
-set showmode
+set noshowmode
 :set shortmess+=F
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -51,8 +51,18 @@ nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :wri
 
 " Status Line
 set laststatus=2
-
+let g:currentmode={
+       \ 'n'  : 'NORMAL ',
+       \ 'v'  : 'VISUAL ',
+       \ 'V'  : 'V·Line ',
+       \ "\<C-V>" : 'V·Block ',
+       \ 'i'  : 'INSERT ',
+       \ 'R'  : 'R ',
+       \ 'Rv' : 'V·Replace ',
+       \ 'c'  : 'Command ',
+       \}
 set statusline=
+set statusline+=\ %{toupper(g:currentmode[mode()])}
 "set statusline+=%7*\[%n]                                  "buffernr
 set statusline+=%1*\ %<%F\                                "File+path
 set statusline+=%2*\ %y\                                  "FileType
@@ -82,3 +92,5 @@ hi User8 guifg=#ffffff
 hi User9 guifg=#ffffff  guibg=#810085
 hi User0 guifg=#ffffff  guibg=#094afe
 
+au InsertEnter * hi StatusLine guifg=#48C6D4 guibg=#1B1E21
+au InsertLeave * hi StatusLine guifg=#5F8787 guibg=#1B1E21
