@@ -79,6 +79,8 @@ require('lazy').setup({
   },
 
 
+
+
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -213,6 +215,9 @@ require('lazy').setup({
       },
     },
   },
+--Find and Replace using spectre
+  {'nvim-pack/nvim-spectre'},
+
 -- File Explorer
 
   {
@@ -232,6 +237,9 @@ require('lazy').setup({
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
 { import = 'custom.plugins' },
 }, {})
+--Neorg auto unfold
+vim.cmd([[ set nofoldenable]])
+
 -- Custom terminal [LazyGit]
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = 'float' })
@@ -308,7 +316,8 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 vim.keymap.set("n", "<C-w>", "<cmd>set wrap!<cr>", { desc = "Toggle Word Wrap" })
-
+--Save on Ctrl+s
+vim.keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "Save" })
 
 vim.opt.wrap = false
 -- [[ Highlight on yank ]]
