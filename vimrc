@@ -27,6 +27,18 @@ set ttimeout
 set ttimeoutlen=1
 set ttyfast
 
+" Autocompletion 
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap < <><left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+
+
 " netrw
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
