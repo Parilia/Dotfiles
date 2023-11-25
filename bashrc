@@ -27,7 +27,7 @@ unset rc
 alias cat="bat"
 alias :q="exit"
 alias :x="clear"
-
+alias :e="vifm"
 ## LSD ## https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
 alias ll="lsd -lah"

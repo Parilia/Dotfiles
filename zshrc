@@ -22,6 +22,7 @@ compinit
 alias cat="bat"
 alias :q="exit"
 alias :x="clear"
+alias :e="vifm"
 ## Image Viewing in Kitty
 alias icat="kitten icat"
 ## LSD ## https://github.com/lsd-rs/lsd
