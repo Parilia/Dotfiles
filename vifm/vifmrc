@@ -1,6 +1,58 @@
+" https://vifm.info/colorschemes.shtml
+colorscheme gruv
+
+" Sets default to see dotfiles.
 set dotfiles
-colorscheme gruv 
+
+" Sets default editor.
 set vicmd=nvim
+
+" Instructs VIFM to use its internal methods for copy/paste operations rather than using utilities like cp.
+set syscalls
+
+" Improve the way in which completion is shown for commands.
+set wildmenu wildstyle=popup
+
+" Sets the maximum number of operations stored in history.
+set history=100
+
+" Sets the maximum number of actions that can be undone.
+set undolevels=100
+
+" Clicking on a link directs you to the target.
+set followlinks
+
+" Clicking on executable files will not automatically execute them.
+set norunexec
+
+" Search operations are case-insensitive unless there is at least one uppercase character.
+set ignorecase smartcase
+
+" Search will be incremental and search results will not be selected before enter is pressed.
+set nohlsearch incsearch
+
+" Keybinds
+" copy parent directory path to clipboard
+nnoremap yd :!echo %d %i | xclip -i -r -selection 'clipboard' -f 
+            \| xclip -i -r -selection 'primary'<cr>
+
+" copy current file name to clipboard
+nnoremap yn :!echo %c %i | xclip -i -r -selection 'clipboard' -f 
+            \| xclip -i -r -selection 'primary'<cr>
+
+" copy current file full path to clipboard
+nnoremap yp :!echo %c:p %i | xclip -i -r -selection 'clipboard' -f 
+            \| xclip -i -r -selection 'primary'<cr>
+
+
+
+" enable trash and set trash folder
+set trash
+set trashdir=~/.vifm_trash
+
+" remove confirmation before trash/delete
+set confirm-=delete,permdelete
+
 
 
 
