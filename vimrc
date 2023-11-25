@@ -31,7 +31,7 @@ set ttyfast
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
 let g:netrw_liststyle = 3
-nnoremap <leader>e :Lexplore<CR>
+nnoremap <silent> <leader>e :Lexplore<CR>
 
 function! NetrwMapping()
 endfunction
@@ -43,8 +43,16 @@ augroup END
 
 function! NetrwMapping()
 	nmap <buffer> a %:w<CR>:buffer #<CR>	
-
+	noremap <buffer> <C-l> <C-w>l
 endfunction
+
+" close if final buffer is netrw or the quickfix
+augroup finalcountdown
+ au!
+ autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
+ nmap - :Lexplore<cr>
+augroup END
+
 " Tab Between Buffers
 nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
@@ -94,3 +102,4 @@ hi User0 guifg=#ffffff  guibg=#094afe
 
 au InsertEnter * hi StatusLine guifg=#48C6D4 guibg=#1B1E21
 au InsertLeave * hi StatusLine guifg=#5F8787 guibg=#1B1E21
+

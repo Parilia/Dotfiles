@@ -28,6 +28,13 @@ alias cat="bat"
 alias :q="exit"
 alias :x="clear"
 
+## LSD ## https://github.com/lsd-rs/lsd
+alias ls="lsd -a"
+alias ll="lsd -lah"
+
+# Vivid Color Theme # https://github.com/sharkdp/vivid
+export LS_COLORS="$(vivid generate molokai)"
+
 # mkcd
 function mkcd {
   if [ ! -n "$1" ]; then
@@ -38,6 +45,7 @@ function mkcd {
     mkdir $1 && cd $1
   fi
 }
+
 # Neovim config switcher
 alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias lvim="NVIM_APPNAME=lvim nvim"
@@ -56,8 +64,11 @@ nvims() {
 
 bind -x '"\C-a": nvims'
 
+# Steam Tinker Launch
 if [ -d "/home/parilia/stl/prefix" ]; then export PATH="$PATH:/home/parilia/stl/prefix"; fi
+
 # Rust
 . "$HOME/.cargo/env"
 
+# Starship Prompt
 eval "$(starship init bash)"

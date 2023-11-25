@@ -22,6 +22,15 @@ compinit
 alias cat="bat"
 alias :q="exit"
 alias :x="clear"
+## Image Viewing in Kitty
+alias icat="kitten icat"
+## LSD ## https://github.com/lsd-rs/lsd
+alias ls="lsd -a"
+alias ll="lsd -lah"
+## Force Neofetch to Display Shell as zsh
+alias neofetch="env SHELL=zsh neofetch"
+
+
 # mkcd
 function mkcd {
   if [ ! -n "$1" ]; then
@@ -32,6 +41,9 @@ function mkcd {
     mkdir $1 && cd $1
   fi
 }
+
+# Vivid Color Theme # https://github.com/sharkdp/vivid
+export LS_COLORS="$(vivid generate molokai)"
 
 
 # nvim switcher
