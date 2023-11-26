@@ -44,7 +44,8 @@ nnoremap yn :!echo %c %i | xclip -i -r -selection 'clipboard' -f
 nnoremap yp :!echo %c:p %i | xclip -i -r -selection 'clipboard' -f 
             \| xclip -i -r -selection 'primary'<cr>
 
-
+" Change to preview mode with "w"
+nnoremap w :view<cr>
 
 " enable trash and set trash folder
 set trash
@@ -53,8 +54,11 @@ set trashdir=~/.vifm_trash
 " remove confirmation before trash/delete
 set confirm-=delete,permdelete
 
-
-
+" Set icat as image viewer
+fileviewer {*.jpg,*.jpeg,*.png,*.gif,*.bmp}
+    \ kitten icat --silent --transfer-mode=file --place=%pwx%ph@%pxx%py %c >/dev/tty </dev/tty %N
+    \ %pc
+    \ kitten icat --clear --silent >/dev/tty </dev/tty %N
 
 " https://github.com/cirala/vifm_devicons
 "
