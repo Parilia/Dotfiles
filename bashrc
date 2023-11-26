@@ -31,6 +31,11 @@ alias :e="vifm"
 ## LSD ## https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
 alias ll="lsd -lah"
+# Quick access to the .zshrc, .bashrc, .vimrc and init.lua
+alias zshrc='${=EDITOR} ~/.zshrc' 
+alias bashrc='${=EDITOR} ~/.bashrc' 
+alias vimrc='${=EDITOR} ~/.vimrc' 
+alias init='${=EDITOR} ~/.config/nvim/init.lua' 
 
 # Vivid Color Theme # https://github.com/sharkdp/vivid
 export LS_COLORS="$(vivid generate molokai)"
@@ -63,6 +68,36 @@ nvims() {
 }
 
 bind -x '"\C-a": nvims'
+
+
+# # ex - archive extractor
+# # usage: ex <file>
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.tar.xz)    tar xJf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1     ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+
+
+
 
 # Steam Tinker Launch
 if [ -d "/home/parilia/stl/prefix" ]; then export PATH="$PATH:/home/parilia/stl/prefix"; fi
