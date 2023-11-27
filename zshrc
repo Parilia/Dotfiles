@@ -23,11 +23,13 @@ alias cat="bat"
 alias :q="exit"
 alias :x="clear"
 alias :e="vifm"
+alias so="source"
 ## Image Viewing in Kitty
 alias icat="kitten icat"
 ## LSD ## https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
 alias ll="lsd -lah"
+alias tree="lsd --tree"
 ## Force Neofetch to Display Shell as zsh
 alias neofetch="env SHELL=zsh neofetch"
 # Quick access to the .zshrc, .bashrc, .vimrc and init.lua
@@ -35,6 +37,9 @@ alias zshrc='${=EDITOR} ~/.zshrc'
 alias bashrc='${=EDITOR} ~/.bashrc' 
 alias vimrc='${=EDITOR} ~/.vimrc' 
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
+# Restart docker apachee server
+alias parstart="sudo docker container restart parilia"
+
 
 # mkcd
 function mkcd {

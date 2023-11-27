@@ -28,14 +28,18 @@ alias cat="bat"
 alias :q="exit"
 alias :x="clear"
 alias :e="vifm"
+alias so="source"
 ## LSD ## https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
 alias ll="lsd -lah"
+alias tree="lsd --tree"
 # Quick access to the .zshrc, .bashrc, .vimrc and init.lua
 alias zshrc='${=EDITOR} ~/.zshrc' 
 alias bashrc='${=EDITOR} ~/.bashrc' 
 alias vimrc='${=EDITOR} ~/.vimrc' 
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
+# Restart docker apachee server
+alias parstart="sudo docker container restart parilia"
 
 # Vivid Color Theme # https://github.com/sharkdp/vivid
 export LS_COLORS="$(vivid generate molokai)"
