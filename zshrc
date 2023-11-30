@@ -99,6 +99,9 @@ ex ()
 
 
 ##################################################################
+##Zoxide
+eval "$(zoxide init zsh)"
+
 ## https://github.com/romkatv/powerlevel10k
 
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme

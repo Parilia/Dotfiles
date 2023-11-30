@@ -100,7 +100,8 @@ ex ()
 }
 
 
-
+#Zoxide
+eval "$(zoxide init bash)"
 
 
 # Steam Tinker Launch
