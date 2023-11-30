@@ -19,14 +19,12 @@ vim.opt.rtp:prepend(lazypath)
 
 
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-  {'nvim-tree/nvim-web-devicons'},
+  -- No config plufins
+  { 'nvim-tree/nvim-web-devicons' },
   -- Git related plugins
 
-  {'akinsho/toggleterm.nvim', version = "*", config = true},
+  { 'akinsho/toggleterm.nvim',    version = "*", config = true },
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -43,17 +41,18 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-{
+  -- Autocompletion of pairs
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
-},
+  },
   -- snippets
   {
     "L3MON4D3/LuaSnip",
     build = (not jit.os:find("Windows"))
         and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build'; make install_jsregexp"
-      or nil,
+        or nil,
     dependencies = {
       "rafamadriz/friendly-snippets",
       config = function()
@@ -71,12 +70,54 @@ require('lazy').setup({
         function()
           return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
         end,
-        expr = true, silent = true, mode = "i",
+        expr = true,
+        silent = true,
+        mode = "i",
       },
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+      { "<tab>",   function() require("luasnip").jump(1) end,  mode = "s" },
       { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     },
   },
+
+--formatting
+{
+  "stevearc/conform.nvim",
+  event = { "BufWritePre" },
+  cmd = { "ConformInfo" },
+  keys = {
+    {
+      -- Customize or remove this keymap to your liking
+      "<leader>f",
+      function()
+        require("conform").format({ async = true, lsp_fallback = true })
+      end,
+      mode = "",
+      desc = "Format buffer",
+    },
+  },
+  -- Everything in opts will be passed to setup()
+  opts = {
+    -- Define your formatters
+    formatters_by_ft = {
+      lua = { "stylua" },
+      python = { "isort", "black" },
+      javascript = { { "prettierd", "prettier" } },
+      html = { { "htmlbeautifier"}},
+    },
+    -- Set up format-on-save
+    format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    -- Customize formatters
+    formatters = {
+      shfmt = {
+        prepend_args = { "-i", "2" },
+      },
+    },
+  },
+  init = function()
+    -- If you want the formatexpr, here is the place to set it
+    vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+  end,
+},
 
 
 
@@ -86,7 +127,7 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
---      'L3MON4D3/LuaSnip',
+      --      'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
 
       -- Adds LSP completion capabilities
@@ -98,8 +139,8 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
-{
+  { 'folke/which-key.nvim',  opts = {} },
+  {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -113,7 +154,7 @@ require('lazy').setup({
       },
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-  -- don't override the built-in and fugitive keymaps
+        -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
         vim.keymap.set({ 'n', 'v' }, ']c', function()
           if vim.wo.diff then
@@ -136,20 +177,26 @@ require('lazy').setup({
       end,
     },
   },
---   {
---     "navarasu/onedark.nvim",
---     opts = {
---       options = {
---         style = 'warmer',
---       },
---     },
---     priority = 1000,
---     config = function()
---       vim.cmd.colorscheme 'onedark'
---     end,
---   },
 
- -- Automatically add closing tags for HTML and JSX
+  --formatting
+
+
+
+
+
+  --     "navarasu/onedark.nvim",
+  --     opts = {
+  --       options = {
+  --         style = 'warmer',
+  --       },
+  --     },
+  --     priority = 1000,
+  --     config = function()
+  --       vim.cmd.colorscheme 'onedark'
+  --     end,
+  --   },
+
+  -- Automatically add closing tags for HTML and JSX
   {
     "windwp/nvim-ts-autotag",
     opts = {},
@@ -171,26 +218,26 @@ require('lazy').setup({
     },
   },
 
-{
-	"lukas-reineke/indent-blankline.nvim",
-  lazy = false,
-	opts = {
-  indent = {
-      char = "│",
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    lazy = false,
+    opts = {
+      indent = {
+        char = "│",
+      },
+      scope = {
+        enabled = false,
+      },
+      exclude = {
+        filetypes = { "help", "alpha", "dashboard", "Trouble", "lazy", "neo-tree" },
+      },
+      whitespace = {
+        remove_blankline_trail = true,
+      },
     },
-    scope = {
-      enabled = false,
-    },
-    exclude = {
-      filetypes = { "help", "alpha", "dashboard", "Trouble", "lazy", "neo-tree" },
-    },
-    whitespace = {
-      remove_blankline_trail = true,
-    },
-  },
 
-	main = "ibl",
-},
+    main = "ibl",
+  },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -215,10 +262,10 @@ require('lazy').setup({
       },
     },
   },
---Find and Replace using spectre
-  {'nvim-pack/nvim-spectre'},
+  --Find and Replace using spectre
+  { 'nvim-pack/nvim-spectre' },
 
--- File Explorer
+  -- File Explorer
 
   {
     -- Highlight, edit, and navigate code
@@ -235,21 +282,21 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-{ import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 --Neorg auto unfold
 vim.cmd([[ set nofoldenable]])
 
 -- Custom terminal [LazyGit]
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = 'float' })
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit  = Terminal:new({ cmd = "lazygit", hidden = true, direction = 'float' })
 
 
 function _lazygit_toggle()
   lazygit:toggle()
 end
 
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -296,12 +343,16 @@ vim.o.showmode = false
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-vim.opt.scrolloff = 8					-- scroll page when cursor is 8 lines from top/bottom
+vim.opt.scrolloff = 8      -- scroll page when cursor is 8 lines from top/bottom
+vim.opt.tabstop = 4        -- Number of spaces tabs count for
+vim.opt.shiftwidth = 4     -- tabs for indentation
+vim.opt.smartindent = true -- Insert indents automatically
+vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set("n", "<leader>e", "<cmd>Lexplore<cr>", { desc = "File Explorer"})
+vim.keymap.set("n", "<leader>e", "<cmd>Lexplore<cr>", { desc = "File Explorer" })
 
 vim.keymap.set("n", "<leader>lN", "<cmd>set rnu<cr>", { desc = "Relative line numbering On" })
 vim.keymap.set("n", "<leader>ln", "<cmd>set rnu!<cr>", { desc = "Relative line numbering Off" })
@@ -309,8 +360,8 @@ vim.keymap.set("n", "<leader>ln", "<cmd>set rnu!<cr>", { desc = "Relative line n
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- buffer navigation
-vim.keymap.set("n", "<Tab>", ":bnext <CR>")				-- Tab goes to next buffer
-vim.keymap.set("n", "<S-Tab>", ":bprevious <CR>")			-- Shift+Tab goes to previous buffer
+vim.keymap.set("n", "<Tab>", ":bnext <CR>")       -- Tab goes to next buffer
+vim.keymap.set("n", "<S-Tab>", ":bprevious <CR>") -- Shift+Tab goes to previous buffer
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -372,7 +423,7 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'html', 'css', 'toml','yaml' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'html', 'css', 'toml', 'yaml' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
@@ -435,12 +486,13 @@ vim.defer_fn(function()
   }
 end, 0)
 
+-- Better Keybinds for netrw
 vim.api.nvim_create_autocmd('filetype', {
   pattern = 'netrw',
   desc = 'Better mappings for netrw',
   callback = function()
     local bind = function(lhs, rhs)
-      vim.keymap.set('n', lhs, rhs, {remap = true, buffer = true})
+      vim.keymap.set('n', lhs, rhs, { remap = true, buffer = true })
     end
 
     -- edit new file
@@ -532,9 +584,9 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
-   rust_analyzer = {},
+  rust_analyzer = {},
   -- tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+  --  html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   lua_ls = {
     Lua = {
@@ -543,6 +595,7 @@ local servers = {
     },
   },
 }
+
 
 -- Setup neovim lua configuration
 require('neodev').setup()
