@@ -18,13 +18,16 @@ zstyle :compinstall filename '/home/parilia/.zshrc'
 autoload -Uz compinit
 compinit
 
+# Allow comments in cli
+setopt interactivecomments
+
 # Aliases
 alias cat="bat"
 alias :q="exit"
 alias :x="clear"
 alias :e="vifm"
 alias so="source"
-## Image Viewing in Kitty
+## Image Viewing in Kitty ## https://github.com/kovidgoyal/kitty
 alias icat="kitten icat"
 ## LSD ## https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
@@ -37,8 +40,12 @@ alias zshrc='${=EDITOR} ~/.zshrc'
 alias bashrc='${=EDITOR} ~/.bashrc' 
 alias vimrc='${=EDITOR} ~/.vimrc' 
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
-# Restart docker apachee server
+# Restart docker apache server
 alias parstart="sudo docker container restart parilia"
+# RPM Update
+alias rpmu="sudo rpm -U"
+## dust disk usage ## https://github.com/bootandy/dust
+alias du="dust -bRp"
 
 
 # mkcd
@@ -98,11 +105,10 @@ ex ()
 }
 
 
-##################################################################
-##Zoxide
+## Zoxide ## https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
-## https://github.com/romkatv/powerlevel10k
+## Power level 10k ## https://github.com/romkatv/powerlevel10k
 
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
