@@ -27,6 +27,7 @@ alias :q="exit"
 alias :x="clear"
 alias :e="vifm"
 alias so="source"
+alias soz="source ~/.zshrc"
 ## Image Viewing in Kitty ## https://github.com/kovidgoyal/kitty
 alias icat="kitten icat"
 ## LSD ## https://github.com/lsd-rs/lsd
@@ -46,7 +47,10 @@ alias parstart="sudo docker container restart parilia"
 alias rpmu="sudo rpm -U"
 ## dust disk usage ## https://github.com/bootandy/dust
 alias du="dust -bRp"
-
+## ark extracting/unpacking. Supports: 7zip, zip, rar, jar, tar, arj and more ## https://apps.kde.org/en-gb/ark/
+alias unpack="ark -ba"
+### Will create new archive or add to existing, example of pack: pack my-archive.zip photo1.jpg text.txt
+alias pack="ark -bt"
 
 # mkcd
 function mkcd {
@@ -77,31 +81,6 @@ nvims() {
     config=""
   fi
   NVIM_APPNAME=$config nvim $@
-}
-
-# # ex - archive extractor
-# # usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.tar.xz)    tar xJf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
 }
 
 
