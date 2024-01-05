@@ -1,6 +1,7 @@
 let g:mapleader = " "
 set nocompatible
 set termguicolors
+set shell=zsh
 colorscheme PaperColor
 set background=dark
 " File:         PaperColor.vim
@@ -114,4 +115,22 @@ hi User0 guifg=#ffffff  guibg=#094afe
 
 au InsertEnter * hi StatusLine guifg=#48C6D4 guibg=#1B1E21
 au InsertLeave * hi StatusLine guifg=#5F8787 guibg=#1B1E21
+
+
+" Word Processor mode, invoke with :WP
+func! WordProcessor()
+  " movement changes
+  map j gj
+  map k gk
+  " formatting text
+  setlocal formatoptions=1
+  setlocal noexpandtab
+  setlocal wrap
+  setlocal linebreak
+  " spelling and thesaurus
+  setlocal spell spelllang=en_gb
+endfu
+com! WP call WordProcessor()
+
+
 
