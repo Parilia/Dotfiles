@@ -21,7 +21,7 @@ set noshowmode
 :set shortmess+=F
 hi Normal guibg=NONE ctermbg=NONE
 
-" cursor changing
+" Cursor changing
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 set ttimeout
@@ -59,7 +59,11 @@ function! NetrwMapping()
 	noremap <buffer> <C-l> <C-w>l
 endfunction
 
-" close if final buffer is netrw or the quickfix
+" Closes netrw when opening a new buffer
+autocmd FileType netrw autocmd BufLeave <buffer> if &filetype == 'netrw' | :bd | endif
+
+
+" Close if final buffer is netrw or the quickfix
 augroup finalcountdown
  au!
  autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
@@ -84,7 +88,6 @@ let g:currentmode={
        \}
 set statusline=
 set statusline+=\ %{toupper(g:currentmode[mode()])}
-"set statusline+=%7*\[%n]                                  "buffernr
 set statusline+=%1*\ %<%F\                                "File+path
 set statusline+=%2*\ %y\                                  "FileType
 set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
@@ -93,7 +96,7 @@ set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix.
 "set statusline+=%5*\ %{&spelllang}\%{HighlightSearch()}\  "Spellanguage & Highlight on?
 set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%9*\ col:%03c\                            "Colnr
-set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+set statusline+=%0*\ \ %m%r%w\Buf:%n\ \                   "Modified? Readonly? Buf number
 
 function! HighlightSearch()
   if &hls
@@ -103,14 +106,14 @@ function! HighlightSearch()
   endif
 endfunction
 
-hi User1 guifg=#E6E6E6  guibg=#1f2226
-hi User2 guifg=#E6E6E6  guibg=#1B1E21
-hi User3 guifg=#E6E6E6  guibg=#1B1E21
-hi User4 guifg=#E6E6E6  guibg=#1B1E21
+hi User1 guifg=#E6E6E6  
+hi User2 guifg=#E6E6E6  
+hi User3 guifg=#E6E6E6  
+hi User4 guifg=#E6E6E6  
 hi User5 guifg=#E6E6E6  guibg=#1B1E21
 hi User7 guifg=#ffffff  guibg=#1f2226 gui=bold
 hi User8 guifg=#ffffff  
-hi User9 guifg=#ffffff  guibg=#810085
+hi User9 guifg=#ffffff  
 hi User0 guifg=#ffffff  guibg=#094afe
 
 au InsertEnter * hi StatusLine guifg=#48C6D4 guibg=#1B1E21
