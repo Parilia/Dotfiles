@@ -51,6 +51,9 @@ alias du="dust -bRp"
 alias unpack="ark -ba"
 ### Will create new archive or add to existing, example of pack: pack my-archive.zip photo1.jpg text.txt
 alias pack="ark -bt"
+## List active dnf repos
+alias dnfrepos="grep -E '^\[.*]' /etc/yum.repos.d/*"
+
 
 # mkcd
 function mkcd {
@@ -62,6 +65,7 @@ function mkcd {
     mkdir $1 && cd $1
   fi
 }
+
 
 # Vivid Color Theme # https://github.com/sharkdp/vivid
 export LS_COLORS="$(vivid generate molokai)"
@@ -85,6 +89,10 @@ nvims() {
 
 
 ## Zoxide ## https://github.com/ajeetdsouza/zoxide
+
+# z ls - zl does ls when jumping to directory
+function zl() { z "$@" && ls; }
+
 eval "$(zoxide init zsh)"
 
 ## Power level 10k ## https://github.com/romkatv/powerlevel10k
