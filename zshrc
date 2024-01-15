@@ -53,7 +53,8 @@ alias unpack="ark -ba"
 alias pack="ark -bt"
 ## List active dnf repos
 alias dnfrepos="grep -E '^\[.*]' /etc/yum.repos.d/*"
-
+# dnf search showing all versions
+alias vsearch="dnf search --showduplicates"
 
 # mkcd
 function mkcd {
@@ -89,11 +90,10 @@ nvims() {
 
 
 ## Zoxide ## https://github.com/ajeetdsouza/zoxide
-
-# z ls - zl does ls when jumping to directory
-function zl() { z "$@" && ls; }
-
 eval "$(zoxide init zsh)"
+
+### z ls - zl does ls when jumping to directory
+function zl() { z "$@" && ls; }
 
 ## Power level 10k ## https://github.com/romkatv/powerlevel10k
 
