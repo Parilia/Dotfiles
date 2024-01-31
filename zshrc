@@ -55,6 +55,10 @@ alias pack="ark -bt"
 alias dnfrepos="grep -E '^\[.*]' /etc/yum.repos.d/*"
 # dnf search showing all versions
 alias vsearch="dnf search --showduplicates"
+## wthrr ## https://github.com/ttytm/wthrr-the-weathercrab
+alias :w="wthrr"
+## Kitty Update
+alias kittyupdate="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 
 # mkcd
 function mkcd {
@@ -67,6 +71,9 @@ function mkcd {
   fi
 }
 
+
+# "proton" tricks
+function pt() { WINEPREFIX="$@" winetricks; }
 
 # Vivid Color Theme # https://github.com/sharkdp/vivid
 export LS_COLORS="$(vivid generate molokai)"
@@ -88,12 +95,16 @@ nvims() {
   NVIM_APPNAME=$config nvim $@
 }
 
+## Rust
+export RUSTUP_HOME="$XDG_DATA_HOME"/.rustup
+
 
 ## Zoxide ## https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
 ### z ls - zl does ls when jumping to directory
 function zl() { z "$@" && ls; }
+
 
 ## Power level 10k ## https://github.com/romkatv/powerlevel10k
 
