@@ -28,39 +28,48 @@ alias :x="clear"
 alias :e="vifm"
 alias so="source"
 alias soz="source ~/.zshrc"
-## Image Viewing in Kitty ## https://github.com/kovidgoyal/kitty
-alias icat="kitten icat"
-## LSD ## https://github.com/lsd-rs/lsd
+
+# LSD # https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
 alias ll="lsd -lah"
 alias tree="lsd --tree"
+
 ## Force Neofetch to Display Shell as zsh
 alias neofetch="env SHELL=zsh neofetch"
+
 # Quick access to the .zshrc, .bashrc, .vimrc and init.lua
 alias zshrc='${=EDITOR} ~/.zshrc' 
 alias bashrc='${=EDITOR} ~/.bashrc' 
 alias vimrc='${=EDITOR} ~/.vimrc' 
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
-# Restart docker apache server
-alias parstart="sudo docker container restart parilia"
-# RPM Update
-alias rpmu="sudo rpm -U"
-## dust disk usage ## https://github.com/bootandy/dust
-alias du="dust -bRp"
-## ark extracting/unpacking. Supports: 7zip, zip, rar, jar, tar, arj and more ## https://apps.kde.org/en-gb/ark/
+
+# ark extracting/unpacking. Supports: 7zip, zip, rar, jar, tar, arj and more ## https://apps.kde.org/en-gb/ark/
 alias unpack="ark -ba"
-### Will create new archive or add to existing, example of pack: pack my-archive.zip photo1.jpg text.txt
+# Will create new archive or add to existing, example of pack: pack my-archive.zip photo1.jpg text.txt
 alias pack="ark -bt"
-## List active dnf repos
+
+# List active dnf repos
 alias dnfrepos="grep -E '^\[.*]' /etc/yum.repos.d/*"
 # dnf search showing all versions
 alias vsearch="dnf search --showduplicates"
-## wthrr ## https://github.com/ttytm/wthrr-the-weathercrab
-alias :w="wthrr"
-## Kitty Update
-alias kittyupdate="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
+# RPM Update
+alias rpmu="sudo rpm -U"
 
-# mkcd
+# Kitty Update # https://github.com/kovidgoyal/kitty
+alias kittyupdate="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
+# Image Viewing in Kitty
+alias icat="kitten icat"
+
+# Restart docker apache server
+alias parstart="sudo docker container restart parilia"
+# dust disk usage # https://github.com/bootandy/dust
+alias du="dust -bRp"
+# wthrr # https://github.com/ttytm/wthrr-the-weathercrab
+alias :w="wthrr"
+# fast
+alias fast="fast --single-line -u"
+
+# mkcd - mkdir & cd combo
 function mkcd {
   if [ ! -n "$1" ]; then
     echo "Enter a directory name"
@@ -76,40 +85,44 @@ function mkcd {
 function pt() { WINEPREFIX="$@" winetricks; }
 
 # Vivid Color Theme # https://github.com/sharkdp/vivid
-export LS_COLORS="$(vivid generate molokai)"
+export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
 
 
 # nvim switcher
-alias nvchad="NVIM_APPNAME=nvchad nvim"
-alias lvim="NVIM_APPNAME=lvim nvim"
+# alias nvchad="NVIM_APPNAME=nvchad nvim"
+# alias lvim="NVIM_APPNAME=lvim nvim"
 
-nvims() {
-  items=("default" "nvchad" "lvim")
-  config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-  if [[ -z $config ]]; then
-    echo "Nothing selected"
-    return 0
-  elif [[ $config == "default" ]]; then
-    config=""
-  fi
-  NVIM_APPNAME=$config nvim $@
-}
+# nvims() {
+#   items=("default" "nvchad" "lvim")
+#   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+#   if [[ -z $config ]]; then
+#     echo "Nothing selected"
+#     return 0
+#   elif [[ $config == "default" ]]; then
+#     config=""
+#   fi
+#   NVIM_APPNAME=$config nvim $@
+# }
 
-## Rust
+# Rust
 export RUSTUP_HOME="$XDG_DATA_HOME"/.rustup
 
 
-## Zoxide ## https://github.com/ajeetdsouza/zoxide
+# Zoxide # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
 
-### z ls - zl does ls when jumping to directory
+## z ls - zl does ls when jumping to directory
 function zl() { z "$@" && ls; }
 
+## z clear - returns home and clears terminal
+function zx() { z && clear; }
 
-## Power level 10k ## https://github.com/romkatv/powerlevel10k
-
+# Power level 10k # https://github.com/romkatv/powerlevel10k
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+# Spicetify # https://github.com/spicetify
+path+=('/home/parilia/.spicetify')

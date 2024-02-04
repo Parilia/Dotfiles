@@ -2,10 +2,13 @@ let g:mapleader = " "
 set nocompatible
 set termguicolors
 set shell=zsh
-colorscheme PaperColor
+let g:gruvbox_material_background = 'hard'
+let g:gruvbox_material_foreground = 'mix'
+let g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
 set background=dark
-" File:         PaperColor.vim
-" URL:          https://github.com/NLKNguyen/papercolor-theme
+" File:         gruvbox-material.vim, autoload/gruvbox_material.vim
+" URL:          https://github.com/sainnhe/gruvbox-material
 :set number
 :set relativenumber
 :set scrolloff=8 
