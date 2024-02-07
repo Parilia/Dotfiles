@@ -4,14 +4,15 @@
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
-
+unset rc
 # User specific environment and startup programs
 
 # Aliases
 # alias alias_name="command_to_run"
-alias cat="bat"
-alias :q="exit"
-alias :x="clear"
 
-#Rust
-. "$HOME/.cargo/env"
+
+
+
+
+
+export PATH=$PATH:/home/parilia/.spicetify

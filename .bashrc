@@ -95,3 +95,5 @@ if [ -d "/home/parilia/stl/prefix" ]; then export PATH="$PATH:/home/parilia/stl/
 
 ## Starship Prompt ## https://github.com/starship/starship
 eval "$(starship init bash)"
+
+export PATH=$PATH:/home/parilia/.spicetify

@@ -104,9 +104,6 @@ export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
 #   NVIM_APPNAME=$config nvim $@
 # }
 
-# Rust
-export RUSTUP_HOME="$XDG_DATA_HOME"/.rustup
-
 
 # Zoxide # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
@@ -116,6 +113,10 @@ function zl() { z "$@" && ls; }
 
 ## z clear - returns home and clears terminal
 function zx() { z && clear; }
+
+
+# Rust
+. "$HOME/.cargo/env"
 
 # Power level 10k # https://github.com/romkatv/powerlevel10k
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
