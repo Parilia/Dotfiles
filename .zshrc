@@ -125,5 +125,8 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
+# Golang
+path+=('/home/parilia/go/bin')
+
 # Spicetify # https://github.com/spicetify
 path+=('/home/parilia/.spicetify')
