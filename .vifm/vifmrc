@@ -8,7 +8,7 @@ set dotfiles
 set vicmd=nvim
 
 " Tells vifm to open files with their default programs
-filetype *.mkv,*.mp4,*.odt,*.pdf xdg-open %c
+filetype *.xspf,*.mkv,*.mp4,*.odt,*.pdf,*.jpg,*.png,*.gif,*.bmp xdg-open %c
 
 
 " Instructs VIFM to use its internal methods for copy/paste operations rather than using utilities like cp.
@@ -50,6 +50,9 @@ nnoremap yp :!echo %c:p %i | xclip -i -r -selection 'clipboard' -f
 
 " Change to preview mode with "w"
 nnoremap w :view<cr>
+
+" Execute script
+nnoremap r :!./%c<cr>
 
 " Symlinks selected file to the directory in the other pane
 command ln ln -s %f:p %D
