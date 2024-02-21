@@ -23,9 +23,9 @@ setopt interactivecomments
 
 # Aliases
 alias cat="bat"
-alias :q="exit"
-alias :x="clear"
-alias :e="vifm"
+alias q="exit"
+alias x="clear"
+alias fm="vifm"
 alias so="source"
 alias soz="source ~/.zshrc"
 
@@ -64,8 +64,6 @@ alias icat="kitten icat"
 alias parstart="sudo docker container restart parilia"
 # dust disk usage # https://github.com/bootandy/dust
 alias du="dust -bRp"
-# wthrr # https://github.com/ttytm/wthrr-the-weathercrab
-alias :w="wthrr"
 # fast
 alias fast="fast --single-line -u"
 
@@ -84,8 +82,9 @@ function mkcd {
 # "proton" tricks
 function pt() { WINEPREFIX="$@" winetricks; }
 
-# Vivid Color Theme # https://github.com/sharkdp/vivid
-export LS_COLORS="$(vivid generate gruvbox-dark-hard)"
+# Vivid Color Theme # https://github.com/ryanccn/vivid-zsh
+vivid_theme="gruvbox-dark-hard"
+source ~/.zsh/vivid-zsh/vivid-zsh.zsh
 
 
 # nvim switcher
@@ -114,9 +113,11 @@ function zl() { z "$@" && ls; }
 ## z clear - returns home and clears terminal
 function zx() { z && clear; }
 
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Rust
 . "$HOME/.cargo/env"
+path+=('~/.cargo/bin')
 
 # Power level 10k # https://github.com/romkatv/powerlevel10k
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
