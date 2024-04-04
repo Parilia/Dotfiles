@@ -28,6 +28,8 @@ alias x="clear"
 alias fm="vifm"
 alias so="source"
 alias soz="source ~/.zshrc"
+alias v="vim"
+alias nv="nvim"
 
 # LSD # https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
@@ -53,7 +55,7 @@ alias dnfrepos="grep -E '^\[.*]' /etc/yum.repos.d/*"
 # dnf search showing all versions
 alias vsearch="dnf search --showduplicates"
 # RPM Update
-alias rpmu="sudo rpm -U"
+alias rpmu="sudo rpm -U --force"
 
 # Kitty Update # https://github.com/kovidgoyal/kitty
 alias kittyupdate="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
@@ -88,19 +90,18 @@ source ~/.zsh/vivid-zsh/vivid-zsh.zsh
 
 
 # nvim switcher
-# alias nvchad="NVIM_APPNAME=nvchad nvim"
-# alias lvim="NVIM_APPNAME=lvim nvim"
+# alias neorg="NVIM_APPNAME=nvchad nvim"
 
 # nvims() {
-#   items=("default" "nvchad" "lvim")
-#   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-#   if [[ -z $config ]]; then
-#     echo "Nothing selected"
-#     return 0
-#   elif [[ $config == "default" ]]; then
-#     config=""
-#   fi
-#   NVIM_APPNAME=$config nvim $@
+  # items=("default" "nvchad")
+  # config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+  # if [[ -z $config ]]; then
+    # echo "Nothing selected"
+    # return 0
+  # elif [[ $config == "default" ]]; then
+    # config=""
+  # fi
+  # NVIM_APPNAME=$config nvim $@
 # }
 
 
@@ -131,3 +132,11 @@ path+=('/home/parilia/go/bin')
 
 # Spicetify # https://github.com/spicetify
 path+=('/home/parilia/.spicetify')
+
+function spicetify-update-files() {
+	sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify;
+	sudo chmod a+wr -R /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/Apps;
+	echo 'File chmod Complete';
+}
+
+
