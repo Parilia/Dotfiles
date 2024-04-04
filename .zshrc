@@ -30,6 +30,8 @@ alias so="source"
 alias soz="source ~/.zshrc"
 alias v="vim"
 alias nv="nvim"
+# Even lazier lazygit # https://github.com/jesseduffield/lazygit
+alias lg="lazygit"
 
 # LSD # https://github.com/lsd-rs/lsd
 alias ls="lsd -a"
