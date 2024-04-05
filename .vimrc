@@ -1,37 +1,41 @@
-let g:mapleader = " "
-set nocompatible
-set termguicolors
-set shell=zsh
+let g:mapleader = " "	 			" Set <space> as leader key
+set nocompatible	 	 			" Disables compatibility with vi - you want this	
+set termguicolors    				" Allows terminal to display 24-bit colours
+set shell=zsh						" Sets shell to use while using term command
+
+" <---colour scheme--->
+" File:         gruvbox-material.vim, autoload/gruvbox_material.vim
+" URL:          https://github.com/sainnhe/gruvbox-material
 let g:gruvbox_material_background = 'hard'
 let g:gruvbox_material_foreground = 'mix'
 let g:gruvbox_material_better_performance = 1
 colorscheme gruvbox-material
 set background=dark
-" File:         gruvbox-material.vim, autoload/gruvbox_material.vim
-" URL:          https://github.com/sainnhe/gruvbox-material
-:set number
-:set relativenumber
-:set scrolloff=8 
-filetype on
-filetype plugin on
-filetype indent on
-set autoindent
-set copyindent
-set smartindent
-syntax on
-set tabstop=4
-set noshowmode
-:set shortmess+=F
-hi Normal guibg=NONE ctermbg=NONE
 
-" Cursor changing
+hi Normal guibg=NONE ctermbg=NONE	" Sets Vim to be transparent
+
+:set number							" Enables line numbers
+:set relativenumber					" Enables relative line numbers by default
+:set scrolloff=8					" Minimal number of screen lines to keep above and below the cursor 
+filetype on							" Detects file type
+filetype plugin on					" Enable loading the plugin files for specific file types
+filetype indent on					" Enable loading the indent file for specific file types
+set autoindent						" Copy indent from current line when starting a new line
+set copyindent						" Makes new line copy whatever characters were used for indenting on the existing line
+set smartindent						" Do smart autoindenting when starting a new line
+syntax on							" Syntax Highlighting
+set tabstop=4						" Number of spaces that a <Tab> in the file counts for
+set noshowmode						" If in Insert, Replace or Visual mode put a message on the last line
+:set shortmess+=F					" Helps to avoid all the hit-enter prompts + don't give the file info when editing a file
+
+"<---Cursor changing--->
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
 set ttimeout
 set ttimeoutlen=1
 set ttyfast
 
-" Autocompletion 
+"<---Autocompletion---> 
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap ( ()<left>
@@ -58,13 +62,13 @@ hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE cter
 hi SpellCap   guisp=yellow    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=yellow
 
 " VimWiki
-
+" Set vimwiki to only be active on wiki files
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'default', 'ext': 'wiki'}]
 let g:vimwiki_global_ext = 0
 
 
-" netrw
+"<---netrw--->
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
 let g:netrw_liststyle = 3
@@ -98,7 +102,7 @@ augroup END
 nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
-" Status Line
+"<---Status Line--->
 set laststatus=2
 let g:currentmode={
        \ 'n'  : 'NORMAL ',
