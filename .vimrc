@@ -54,6 +54,13 @@ let &t_Ce = "\e[4:0m"
 hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=red
 hi SpellCap   guisp=yellow    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=yellow
 
+" VimWiki
+
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'default', 'ext': 'wiki'}]
+let g:vimwiki_global_ext = 0
+
+
 " netrw
 let g:netrw_banner = 0
 let g:netrw_winsize = 20
