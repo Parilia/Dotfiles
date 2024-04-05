@@ -41,6 +41,9 @@ inoremap < <><left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+" Soft wordwrap
+nmap <silent> <leader>lb :set linebreak!<cr> 
+
 " Spell checker
 set spell
 set spelllang=en_gb
