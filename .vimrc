@@ -1,6 +1,6 @@
 "<---Vim settings--->
 let g:mapleader = " "	 			" Set <space> as leader key
-set nocompatible	 	 			" Disables compatibility with vi - you want this	
+set nocompatible	 	 			" Disables compatibility with vi - you want this, makes vim work correctly	
 set termguicolors    				" Allows terminal to display 24-bit colours
 set shell=zsh						" Sets shell to use while using term command
 
@@ -14,7 +14,7 @@ filetype indent on					" Enable loading the indent file for specific file types
 
 set autoindent						" Copy indent from current line when starting a new line
 set copyindent						" Makes new line copy whatever characters were used for indenting on the existing line
-set smartindent						" Do smart autoindenting when starting a new line
+set smartindent						" Do smart auto indenting when starting a new line
 
 syntax on							" Syntax Highlighting
 set tabstop=4						" Number of spaces that a <Tab> in the file counts for
@@ -22,7 +22,7 @@ set noshowmode						" If in Insert, Replace or Visual mode put a message on the 
 :set shortmess+=F					" Helps to avoid all the hit-enter prompts + don't give the file info when editing a file
 
 
-" <---colour scheme--->
+" <---Colour scheme--->
 
 " File: gruvbox-material.vim, autoload/gruvbox_material.vim
 " URL:  https://github.com/sainnhe/gruvbox-material
@@ -69,8 +69,17 @@ hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE cter
 hi SpellCap   guisp=yellow    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=yellow
 
 
-"<---VimWiki--->
+"<---Highlight on yank--->
+" URL:	https://github.com/statox/FYT.vim
 
+hi fyt_yank guifg=#1B1E21	guibg=#a9b665 "Colour of yank highlight
+let g:FYT_highlight_group = 'fyt_yank'
+let g:FYT_flash_time = 200
+
+
+"<---VimWiki--->
+"URL:	https://github.com/vimwiki/vimwiki
+"
 " Set vimwiki to only be active on wiki files
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'default', 'ext': 'wiki'}]
