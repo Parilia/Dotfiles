@@ -135,10 +135,12 @@ path+=('/home/parilia/go/bin')
 # Spicetify # https://github.com/spicetify
 path+=('/home/parilia/.spicetify')
 
-function spicetify-update-files() {
+function spicetify-update() {
+	spicetify update;
+	spicetify restore backup apply;
 	sudo chmod a+wr /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify;
 	sudo chmod a+wr -R /var/lib/flatpak/app/com.spotify.Client/x86_64/stable/active/files/extra/share/spotify/Apps;
-	echo 'File chmod Complete';
+	spicetify apply;
 }
 
 
