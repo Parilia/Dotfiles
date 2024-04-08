@@ -4,9 +4,9 @@ set nocompatible	 	 			" Disables compatibility with vi - you want this, makes v
 set termguicolors    				" Allows terminal to display 24-bit colours
 set shell=zsh						" Sets shell to use while using term command
 
-:set number							" Enables line numbers
-:set relativenumber					" Enables relative line numbers by default
-:set scrolloff=8					" Minimal number of screen lines to keep above and below the cursor 
+set number							" Enables line numbers
+set relativenumber					" Enables relative line numbers by default
+set scrolloff=8					" Minimal number of screen lines to keep above and below the cursor 
 
 filetype on							" Detects file type
 filetype plugin on					" Enable loading the plugin files for specific file types
@@ -20,6 +20,34 @@ syntax on							" Syntax Highlighting
 set tabstop=4						" Number of spaces that a <Tab> in the file counts for
 set noshowmode						" If in Insert, Replace or Visual mode put a message on the last line
 :set shortmess+=F					" Helps to avoid all the hit-enter prompts + don't give the file info when editing a file
+
+set path+=**						" Allows find to search sub directories
+set wildmenu						" Displays all matching files via tab complete
+
+
+"<---Key Bindings--->
+
+" Tab Between Buffers
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+
+" Soft wordwrap
+nmap <silent> <leader>lb :set linebreak!<cr>
+
+" Fuzzy finder, only use in projects not in home as will search all sub directories
+nnoremap <leader>f :find *
+
+" Search old files, when found hit 'q' then enter number and hit 'enter' 
+nnoremap <leader>? :ol <cr>:e #<
+
+" Replace in whole file, :%s/foo/bar/g
+nnoremap <leader>r :%s/
+
+"<---User Defined Commands--->
+command Vimrc :e ~/.vimrc
+command Zshrc :e ~/.zshrc
+
+command Template :read template.html
 
 
 " <---Colour scheme--->
@@ -114,16 +142,6 @@ augroup finalcountdown
  autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&filetype") == "netrw" || &buftype == 'quickfix' |q|endif
  nmap - :Lexplore<cr>
 augroup END
-
-
-"<---Key Bindings--->
-
-" Tab Between Buffers
-nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
-
-" Soft wordwrap
-nmap <silent> <leader>lb :set linebreak!<cr>
 
 
 "<---Status Line--->
