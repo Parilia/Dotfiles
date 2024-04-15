@@ -19,7 +19,7 @@ set smartindent						" Do smart auto indenting when starting a new line
 syntax on							" Syntax Highlighting
 set tabstop=4						" Number of spaces that a <Tab> in the file counts for
 set noshowmode						" If in Insert, Replace or Visual mode put a message on the last line
-:set shortmess+=F					" Helps to avoid all the hit-enter prompts + don't give the file info when editing a file
+set shortmess+=F					" Helps to avoid all the hit-enter prompts + don't give the file info when editing a file
 
 set path+=**						" Allows find to search sub directories
 set wildmenu						" Displays all matching files via tab complete
