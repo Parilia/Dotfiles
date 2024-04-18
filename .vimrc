@@ -97,6 +97,13 @@ hi SpellBad   guisp=red    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE cter
 hi SpellCap   guisp=yellow    gui=undercurl guifg=NONE guibg=NONE ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl ctermul=yellow
 
 
+"<---Templates--->
+
+  augroup templates
+    autocmd BufNewFile pack.mcmeta 0r ~/.vim/templates/skeleton.mcmeta | normal 2j17l
+  augroup END
+
+
 "<---Highlight on yank--->
 " URL:	https://github.com/statox/FYT.vim
 
