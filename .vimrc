@@ -6,7 +6,7 @@ set shell=zsh						" Sets shell to use while using term command
 
 set number							" Enables line numbers
 set relativenumber					" Enables relative line numbers by default
-set scrolloff=8					" Minimal number of screen lines to keep above and below the cursor 
+set scrolloff=8						" Minimal number of screen lines to keep above and below the cursor 
 
 filetype on							" Detects file type
 filetype plugin on					" Enable loading the plugin files for specific file types
@@ -49,6 +49,7 @@ command Zshrc :e ~/.zshrc
 
 command Template :read template.html
 
+command Htmlformat :! htmlbeautifier %
 
 " <---Colour scheme--->
 
@@ -82,10 +83,12 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 
-
 "<---Spell checker--->
 set spell
 set spelllang=en_gb
+" When tying a word press <C-p> to bring up spelling suggestions
+set complete+=kspell
+set completeopt=menuone
 
 " Toggle spell checker
 nmap <silent> <leader>s :set spell!<cr>
