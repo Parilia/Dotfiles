@@ -49,7 +49,7 @@ command Zshrc :e ~/.zshrc
 
 command Template :read template.html
 
-command Htmlformat :! htmlbeautifier %
+command Htmlformat :! htmlbeautifier %		" https://github.com/threedaymonk/htmlbeautifier
 
 " <---Colour scheme--->
 
@@ -173,7 +173,6 @@ set statusline+=%2*\ %y\                                  "FileType
 set statusline+=%3*\ %{''.(&fenc!=''?&fenc:&enc).''}      "Encoding
 set statusline+=%3*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%4*\ %{&ff}\                              "FileFormat (dos/unix..) 
-"set statusline+=%5*\ %{&spelllang}\                      "Spellanguage
 set statusline+=%8*\ %=\ row:%l/%L\ (%03p%%)\             "Rownumber/total (%)
 set statusline+=%9*\ col:%03c\                            "Colnr
 set statusline+=%0*\ \ %m%r%w\Buf:%n\ \                   "Modified? Readonly? Buf number
@@ -191,7 +190,6 @@ hi User2 guifg=#a89984  guibg=#32302f
 hi User3 guifg=#a89984  guibg=#32302f
 hi User4 guifg=#a89984  guibg=#32302f
 hi User5 guifg=#a89984  guibg=#32302f
-"hi User7 guifg=#a89984  guibg=#a9b665 gui=bold " Colour changing handled below
 hi User8 guifg=#a89984  guibg=#32302f
 hi User9 guifg=#a89984  guibg=#32302f
 hi User0 guifg=#a89984  guibg=#32302f

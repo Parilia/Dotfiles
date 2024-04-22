@@ -44,7 +44,7 @@ alias neofetch="env SHELL=zsh neofetch"
 # Quick access to the .zshrc, .bashrc, .vimrc and init.lua
 alias zshrc='${=EDITOR} ~/.zshrc' 
 alias bashrc='${=EDITOR} ~/.bashrc' 
-alias vimrc='${=EDITOR} ~/.vimrc' 
+alias vimrc='vim ~/.vimrc' 
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
 
 # ark extracting/unpacking. Supports: 7zip, zip, rar, jar, tar, arj and more ## https://apps.kde.org/en-gb/ark/
@@ -92,19 +92,19 @@ source ~/.zsh/vivid-zsh/vivid-zsh.zsh
 
 
 # nvim switcher
-# alias neorg="NVIM_APPNAME=nvchad nvim"
+ alias mnv="NVIM_APPNAME=minvim nvim"
 
-# nvims() {
-  # items=("default" "nvchad")
-  # config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-  # if [[ -z $config ]]; then
-    # echo "Nothing selected"
-    # return 0
-  # elif [[ $config == "default" ]]; then
-    # config=""
-  # fi
-  # NVIM_APPNAME=$config nvim $@
-# }
+ nvims() {
+   items=("default" "minvim")
+   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
+   if [[ -z $config ]]; then
+     echo "Nothing selected"
+     return 0
+   elif [[ $config == "default" ]]; then
+     config=""
+   fi
+   NVIM_APPNAME=$config nvim $@
+ }
 
 
 # Zoxide # https://github.com/ajeetdsouza/zoxide
