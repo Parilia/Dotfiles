@@ -28,7 +28,6 @@ alias x="clear"
 alias fm="vifm"
 alias so="source"
 alias soz="source ~/.zshrc"
-alias v="vim"
 alias nv="nvim"
 # Even lazier lazygit # https://github.com/jesseduffield/lazygit
 alias lg="lazygit"
@@ -82,6 +81,8 @@ function mkcd {
   fi
 }
 
+# mcmeta maker
+alias mcmeta="vim pack.mcmeta -c wq"
 
 # "proton" tricks
 function pt() { WINEPREFIX="$@" winetricks; }
@@ -92,10 +93,10 @@ source ~/.zsh/vivid-zsh/vivid-zsh.zsh
 
 
 # nvim switcher
- alias mnv="NVIM_APPNAME=minvim nvim"
+ alias v="NVIM_APPNAME=mnvim nvim"
 
  nvims() {
-   items=("default" "minvim")
+   items=("default" "mnvim")
    config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
    if [[ -z $config ]]; then
      echo "Nothing selected"
@@ -117,6 +118,8 @@ function zl() { z "$@" && ls; }
 function zx() { z && clear; }
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+path+=('/home/.local/bin')
+
 
 # Rust
 . "$HOME/.cargo/env"
