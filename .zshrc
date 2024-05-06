@@ -51,6 +51,9 @@ alias unpack="ark -ba"
 # Will create new archive or add to existing, example of pack: pack my-archive.zip photo1.jpg text.txt
 alias pack="ark -bt"
 
+# Extract an exe
+alias unpack-exe="innoextract"
+
 # List active dnf repos
 alias dnfrepos="grep -E '^\[.*]' /etc/yum.repos.d/*"
 # dnf search showing all versions
