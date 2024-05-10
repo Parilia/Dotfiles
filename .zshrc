@@ -43,8 +43,10 @@ alias neofetch="env SHELL=zsh neofetch"
 # Quick access to the .zshrc, .bashrc, .vimrc and init.lua
 alias zshrc='${=EDITOR} ~/.zshrc' 
 alias bashrc='${=EDITOR} ~/.bashrc' 
-alias vimrc='vim ~/.vimrc' 
+alias vimrc='${=EDITOR} ~/.vimrc' 
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
+
+alias wiki='vim -c VimwikiIndex'
 
 # ark extracting/unpacking. Supports: 7zip, zip, rar, jar, tar, arj and more ## https://apps.kde.org/en-gb/ark/
 alias unpack="ark -ba"
