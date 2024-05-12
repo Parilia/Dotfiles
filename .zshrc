@@ -28,7 +28,7 @@ alias x="clear"
 alias fm="vifm"
 alias so="source"
 alias soz="source ~/.zshrc"
-alias nv="nvim"
+alias v="nvim"
 # Even lazier lazygit # https://github.com/jesseduffield/lazygit
 alias lg="lazygit"
 
@@ -45,6 +45,7 @@ alias zshrc='${=EDITOR} ~/.zshrc'
 alias bashrc='${=EDITOR} ~/.bashrc' 
 alias vimrc='${=EDITOR} ~/.vimrc' 
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
+alias oldinit='${=EDITOR} ~/.config/onvim/init.lua' 
 
 alias wiki='vim -c VimwikiIndex'
 
@@ -98,10 +99,10 @@ source ~/.zsh/vivid-zsh/vivid-zsh.zsh
 
 
 # nvim switcher
- alias v="NVIM_APPNAME=mnvim nvim"
+ alias nv="NVIM_APPNAME=onvim nvim"
 
  nvims() {
-   items=("default" "mnvim")
+   items=("default" "old_nvim")
    config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
    if [[ -z $config ]]; then
      echo "Nothing selected"
