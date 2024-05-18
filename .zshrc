@@ -47,8 +47,8 @@ alias vimrc='${=EDITOR} ~/.vimrc'
 alias init='${=EDITOR} ~/.config/nvim/init.lua' 
 alias oldinit='${=EDITOR} ~/.config/onvim/init.lua' 
 
-alias wiki='vim -c VimwikiIndex'
-
+alias wiki='nvim -c VimwikiIndex'
+alias vim='vimx'
 # ark extracting/unpacking. Supports: 7zip, zip, rar, jar, tar, arj and more ## https://apps.kde.org/en-gb/ark/
 alias unpack="ark -ba"
 # Will create new archive or add to existing, example of pack: pack my-archive.zip photo1.jpg text.txt

@@ -27,7 +27,7 @@
   set autoread                              " Allows auto reloading of file if file is changed
   au CursorHold * checktime  
   set nowrap
-  set clipboard+=unnamedplus
+  set clipboard=unnamedplus
 
 
   "<---Key Bindings--->
