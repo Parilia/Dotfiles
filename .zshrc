@@ -75,6 +75,8 @@ alias parstart="sudo docker container restart parilia"
 alias du="dust -bRp"
 # fast
 alias fast="fast --single-line -u"
+# jerry
+alias ani="jerry"
 
 # mkcd - mkdir & cd combo
 function mkcd {
@@ -87,13 +89,21 @@ function mkcd {
   fi
 }
 
+# Rename all files in CWD .extension - ie html > md
+function rename-ext {
+for file in *.$1
+do
+  mv "$file" "${file%.$1}.$2"
+done
+}
+
 # mcmeta maker
 alias mcmeta="vim pack.mcmeta -c wq"
 
 # "proton" tricks
 function pt() { WINEPREFIX="$@" winetricks; }
 
-# Vivid Color Theme # https://github.com/ryanccn/vivid-zsh
+# Vivid Colour Theme # https://github.com/ryanccn/vivid-zsh
 vivid_theme="gruvbox-dark-hard"
 source ~/.zsh/vivid-zsh/vivid-zsh.zsh
 
