@@ -97,12 +97,26 @@ do
 done
 }
 
+# git push all
+function gpa() {
+  git add -A;
+  git commit -m "$@";
+  git push;
+}
+
+
 # Notes git 
-function wiki-git() {
+function wiki-push() {
   cd ~/vimwiki;
   git add -A;
   git commit -m "Note Upload";
   git push;
+  cd -;
+}
+
+function wiki-pull() {
+  cd ~/vimwiki;
+  git pull;
   cd -;
 }
 
