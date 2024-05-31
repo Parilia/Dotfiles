@@ -104,7 +104,6 @@ function gpa() {
   git push;
 }
 
-
 # Notes git 
 function wiki-push() {
   cd ~/vimwiki;
@@ -129,23 +128,6 @@ function pt() { WINEPREFIX="$@" winetricks; }
 # Vivid Colour Theme # https://github.com/ryanccn/vivid-zsh
 vivid_theme="gruvbox-dark-hard"
 source ~/.zsh/vivid-zsh/vivid-zsh.zsh
-
-
-# nvim switcher
- alias nv="NVIM_APPNAME=onvim nvim"
-
- nvims() {
-   items=("default" "old_nvim")
-   config=$(printf "%s\n" "${items[@]}" | fzf --prompt=" Neovim Config  " --height=~50% --layout=reverse --border --exit-0)
-   if [[ -z $config ]]; then
-     echo "Nothing selected"
-     return 0
-   elif [[ $config == "default" ]]; then
-     config=""
-   fi
-   NVIM_APPNAME=$config nvim $@
- }
-
 
 # Zoxide # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
