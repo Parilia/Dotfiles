@@ -97,6 +97,15 @@ do
 done
 }
 
+# Notes git 
+function wiki-git() {
+  cd ~/vimwiki;
+  git add -A;
+  git commit -m "Note Upload";
+  git push;
+  cd -;
+}
+
 # mcmeta maker
 alias mcmeta="vim pack.mcmeta -c wq"
 
