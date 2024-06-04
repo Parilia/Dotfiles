@@ -11,6 +11,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 bindkey -e
 EDITOR=nvim
+SUDO_EDITOR=nvim
+export SUDO_EDITOR=nvim
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/parilia/.zshrc'
@@ -69,8 +71,11 @@ alias kittyupdate="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /de
 # Image Viewing in Kitty
 alias icat="kitten icat"
 
-# Restart docker apache server
-alias parstart="sudo docker container restart parilia"
+# caddy server
+alias server-start="sudo caddy start"
+alias server-stop="sudo caddy stop"
+alias server-edit="sudoedit /etc/caddy/Caddyfile"
+
 # dust disk usage # https://github.com/bootandy/dust
 alias du="dust -bRp"
 # fast
@@ -127,7 +132,7 @@ function pt() { WINEPREFIX="$@" winetricks; }
 
 # Vivid Colour Theme # https://github.com/ryanccn/vivid-zsh
 vivid_theme="gruvbox-dark-hard"
-source ~/.zsh/vivid-zsh/vivid-zsh.zsh
+source ~/.zsh/vivid-zsh/vivid-zsh.plugin.zsh
 
 # Zoxide # https://github.com/ajeetdsouza/zoxide
 eval "$(zoxide init zsh)"
@@ -143,7 +148,7 @@ path+=('/home/.local/bin')
 
 
 # Rust
-. "$HOME/.cargo/env"
+path+=('~/.cargo/env')
 path+=('~/.cargo/bin')
 
 # Power level 10k # https://github.com/romkatv/powerlevel10k
@@ -154,7 +159,7 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Golang
-path+=('/home/parilia/go/bin')
+# path+=('/home/parilia/go/bin')
 
 # Spicetify # https://github.com/spicetify
 path+=('/home/parilia/.spicetify')

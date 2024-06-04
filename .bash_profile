@@ -16,3 +16,4 @@ unset rc
 
 
 export PATH=$PATH:/home/parilia/.spicetify
+. "$HOME/.cargo/env"
