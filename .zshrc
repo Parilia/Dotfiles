@@ -113,7 +113,7 @@ function gpa() {
 function wiki-push() {
   cd ~/vimwiki;
   git add -A;
-  git commit -m "Note Upload";
+  git commit -m "Note Update";
   git push;
   cd -;
 }
@@ -172,4 +172,4 @@ function spicetify-update() {
 	spicetify apply;
 }
 
-
+source ~/.scripts/server-connect.sh
